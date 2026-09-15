@@ -29,15 +29,14 @@ export default function OndeEncontrarPage() {
 
       <Section surface="paper" padding="loose">
         <div className="shell">
-          {/* TODO [confirmar]: lista de pontos de venda fixos e feiras agendadas. */}
+          {/* TODO: lista de pontos de venda fixos e feiras agendadas, quando houver. */}
           <Reveal>
             <div
               className="max-w-[48rem] border border-dashed p-8 sm:p-10"
               style={{ borderColor: 'var(--s-line)' }}
             >
               <p className="label">Agenda</p>
-              <p className="body mt-5">{paginas.ondeEncontrar.placeholder}</p>
-              <p className="body mt-6">
+              <p className="body mt-5">
                 Enquanto isso, o calendário atualizado fica no Instagram{' '}
                 <a
                   href={site.instagram.url}

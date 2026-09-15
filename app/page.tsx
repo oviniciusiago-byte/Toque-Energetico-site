@@ -14,7 +14,7 @@ import CenaHorizontal from '@/components/scroll/CenaHorizontal';
 
 import { categoriasVisiveis, getCategoria } from '@/content/categorias';
 import { contagemPorCategoria, produtosPorCategoria, produtosDestaque } from '@/content/produtos';
-import { capitulos, home, paginas, valores } from '@/content/site';
+import { conceito, home, paginas, valores } from '@/content/site';
 import { wppMsg } from '@/lib/whatsapp';
 
 /**
@@ -51,9 +51,10 @@ export default function HomePage() {
           <div className="grid-12 items-start gap-y-10">
             <div className="col-span-4 md:col-span-3">
               <Reveal>
-                <p className="label-quiet mb-5" style={{ letterSpacing: '0.3em' }}>
-                  {capitulos.sombra}
-                </p>
+                {/* Aqui estava "Capítulo I · Sombra" — a legenda de um conceito
+                    que a cliente pediu para NÃO explicar. No lugar entra o eixo
+                    da marca, dito uma vez só e no lugar certo: o manifesto. */}
+                <p className="lede mb-7 max-w-[26rem] text-pretty">{conceito.eixo}</p>
                 <div className="flex items-center gap-3">
                   <span className="label-quiet tnum">01</span>
                   <span aria-hidden="true" className="h-px w-6 bg-[color:var(--s-line)]" />
@@ -78,7 +79,6 @@ export default function HomePage() {
       <Section surface="ink" padding="tight" secao="Os banhos">
         <div className="shell">
           <SectionHead
-            capitulo={capitulos.presenca}
             indice="02"
             label="Banhos & Escalda-Pés"
             titulo="Oito banhos, oito intenções"
@@ -195,7 +195,6 @@ export default function HomePage() {
       <Section surface="smoke" padding="loose" secao="Rituais" texture>
         <div className="shell relative">
           <SectionHead
-            capitulo={capitulos.luz}
             indice="06"
             label={home.comoUsar.kicker}
             titulo={home.comoUsar.titulo}
@@ -230,36 +229,40 @@ export default function HomePage() {
       </Section>
 
       {/* ── 8 · Depoimentos ───────────────────────────────────── papel ──── */}
-      <Section surface="paper" padding="loose" secao="Depoimentos">
-        <div className="shell">
-          <SectionHead
-            indice="07"
-            label={home.depoimentos.kicker}
-            titulo={home.depoimentos.titulo}
-            alinhamento="center"
-          />
+      {/* A seção de depoimentos só é renderizada quando houver mensagem real.
+          Antes havia três caixas tracejadas com um aviso de conteúdo pendente
+          — pior do que não ter a seção. Basta preencher `depoimentos.itens`
+          em content/site.ts para ela voltar. */}
+      {home.depoimentos.itens.length > 0 ? (
+        <Section surface="paper" padding="loose" secao="Depoimentos">
+          <div className="shell">
+            <SectionHead
+              indice="07"
+              label={home.depoimentos.kicker}
+              titulo={home.depoimentos.titulo}
+              alinhamento="center"
+            />
 
-          {/* TODO [confirmar]: 2–3 mensagens reais de clientes já recebidas. */}
-          <RevealGroup
-            className="mx-auto mt-14 grid max-w-[62rem] grid-cols-1 gap-6 sm:grid-cols-3"
-            stagger={0.08}
-          >
-            {[0, 1, 2].map((i) => (
-              <RevealItem key={i}>
-                <div
-                  className="flex min-h-[13rem] flex-col justify-between border border-dashed p-7"
-                  style={{ borderColor: 'var(--s-line)' }}
-                >
-                  <Star size={18} className="text-[color:var(--s-accent)] opacity-60" />
-                  <p className="label-quiet mt-6 leading-relaxed">
-                    {home.depoimentos.placeholder}
-                  </p>
-                </div>
-              </RevealItem>
-            ))}
-          </RevealGroup>
-        </div>
-      </Section>
+            <RevealGroup
+              className="mx-auto mt-14 grid max-w-[62rem] grid-cols-1 gap-6 sm:grid-cols-3"
+              stagger={0.08}
+            >
+              {home.depoimentos.itens.map((d) => (
+                <RevealItem key={d.autoria}>
+                  <figure
+                    className="flex min-h-[13rem] flex-col justify-between border-t pt-7"
+                    style={{ borderColor: 'var(--s-line)' }}
+                  >
+                    <Star size={18} className="text-[color:var(--s-accent)] opacity-60" />
+                    <blockquote className="body mt-6 leading-relaxed">{d.texto}</blockquote>
+                    <figcaption className="label-quiet mt-5">{d.autoria}</figcaption>
+                  </figure>
+                </RevealItem>
+              ))}
+            </RevealGroup>
+          </div>
+        </Section>
+      ) : null}
 
       {/* ── 9 · Fechamento ─────────────────────────────────────── tinta ─── */}
       <WhatsAppCTA

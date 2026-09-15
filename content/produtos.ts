@@ -3,7 +3,7 @@ import type { Produto } from '@/lib/types';
 /**
  * Catálogo — fonte: `docs/toque-energetico-copy-site-v1.md`.
  *
- * Marcações [confirmar: …] são literais: dependem da fórmula real do produto e
+ * Marcações são literais: dependem da fórmula real do produto e
  * precisam da Fernanda antes de publicar (composição, notas de aroma e avisos
  * de segurança sobretudo). Não preencher por conta própria.
  *
@@ -29,7 +29,7 @@ const brumas: Produto[] = [
       'Criado para apoiar a proteção da sua energia pessoal e a manutenção de um campo mais seu — com limites próprios. Acompanha dias movimentados, ambientes de muita gente, períodos de maior exposição ou aqueles momentos em que você percebe que está sendo levado pelo que acontece ao redor. A proposta não é criar isolamento, e sim favorecer presença, discernimento e uma relação mais consciente com a própria energia.',
     aroma: 'Lavanda, suave e limpa.',
     composicao:
-      'Essências florais e óleos essenciais cuidadosamente selecionados. [confirmar: lista completa de essências]',
+      'Essências florais e óleos essenciais cuidadosamente selecionados.',
     volume: '120 ml',
     preco: 'R$ 58',
     precoBase: 58,
@@ -53,9 +53,7 @@ const brumas: Produto[] = [
     descricaoCurta: 'O perfume de passar que acompanha o corpo pelo dia, sem peso.',
     intencao:
       'Uma bruma leve para vestir depois do banho ou renovar no meio do dia. Não é um perfume que anuncia; é um que acompanha — discreto o bastante para ser só seu. Para começar a manhã ou para dar um respiro à tarde.',
-    aroma: '[confirmar: notas — sugestão de perfil fresco/floral leve]',
-    composicao: '[confirmar: base e óleos essenciais]',
-    // TODO [confirmar]: a cliente pediu para verificar este volume (feedback, item 16)
+    // TODO: a cliente pediu para verificar este volume (feedback, item 16)
     volume: '120 ml',
     preco: 'R$ 58',
     precoBase: 58,
@@ -63,7 +61,7 @@ const brumas: Produto[] = [
     modoDeUso:
       'Borrife sobre a pele, após o banho ou quando quiser renovar. Reaplique à vontade.',
     cuidados:
-      'Uso externo. Evite contato com os olhos. Pode manchar tecidos delicados — teste antes. [confirmar]',
+      'Uso externo. Evite contato com os olhos. Pode manchar tecidos delicados — teste antes.',
     fechamento: 'Um frescor que fica com você.',
     imagens: img('bruma-de-frescor', 3),
     destaque: true,
@@ -77,9 +75,7 @@ const brumas: Produto[] = [
     descricaoCurta: 'O ar do cômodo muda — e o estado de quem está nele, também.',
     intencao:
       'Para os espaços onde você vive. Borrife ao chegar em casa, antes de dormir, no início de um trabalho que pede concentração ou depois de um dia agitado. Não perfuma só o ambiente: marca uma transição — do lado de fora para o lado de dentro.',
-    aroma: '[confirmar: notas]',
-    composicao: '[confirmar: base e óleos essenciais]',
-    // TODO [confirmar]: a cliente pediu para verificar este volume (feedback, item 16)
+    // TODO: a cliente pediu para verificar este volume (feedback, item 16)
     volume: '120 ml',
     preco: 'R$ 58',
     precoBase: 58,
@@ -102,9 +98,8 @@ const brumas: Produto[] = [
     descricaoCurta: 'Um buquê botânico para o carro, com essência para reavivar quando quiser.',
     intencao:
       'Porque o carro também é um lugar onde a gente passa a vida. A Aura Botânica leva um pequeno buquê seco e uma essência de 10 ml para renovar o aroma quando ele começar a se despedir. Transforma o trajeto — de casa ao trabalho, do trabalho a casa — num intervalo mais seu.',
-    aroma: '[confirmar: notas da essência]',
     composicao:
-      'Buquê botânico seco + essência aromática concentrada 10 ml. [confirmar: flores/ervas do buquê]',
+      'Buquê botânico seco + essência aromática concentrada 10 ml.',
     volume: 'Buquê + essência aromática 10 ml',
     preco: 'R$ 56',
     precoBase: 56,
@@ -140,7 +135,7 @@ const oleos: Produto[] = [
       'Um óleo para desacelerar o toque. A rosa e o gerânio conversam num aroma cálido e envolvente, para os momentos em que você quer se tratar com um pouco mais de gentileza.',
     aroma: 'Rosa e gerânio — floral, quente, encorpado.',
     composicao:
-      'Óleo vegetal de coco, pétalas de rosa e gerânio em imersão, óleos essenciais. [confirmar]',
+      'Óleo vegetal de coco, pétalas de rosa e gerânio em imersão, óleos essenciais.',
     volume: '30 ml',
     preco: 'a partir de R$ 58',
     precoBase: 58,
@@ -162,7 +157,7 @@ const oleos: Produto[] = [
       'O óleo da noite, ou de qualquer hora que peça calma. A lavanda acompanha o gesto de desacelerar: aplique nas mãos, nos ombros, nos pés, antes de dormir.',
     aroma: 'Lavanda — herbácea, serena, limpa.',
     composicao:
-      'Óleo vegetal de coco, flores de lavanda em imersão, óleo essencial de lavanda. [confirmar]',
+      'Óleo vegetal de coco, flores de lavanda em imersão, óleo essencial de lavanda.',
     volume: '30 ml',
     preco: 'a partir de R$ 58',
     precoBase: 58,
@@ -184,7 +179,7 @@ const oleos: Produto[] = [
       'O jasmim não sussurra. Este é o óleo para os dias em que você quer se sentir inteira, presente, um pouco mais viva na própria pele.',
     aroma: 'Jasmim — floral intenso, doce, marcante.',
     composicao:
-      'Óleo vegetal de coco, flores de jasmim em imersão, óleos essenciais. [confirmar]',
+      'Óleo vegetal de coco, flores de jasmim em imersão, óleos essenciais.',
     volume: '30 ml',
     preco: 'a partir de R$ 58',
     precoBase: 58,
@@ -211,7 +206,7 @@ const oleos: Produto[] = [
  * Nome, subtítulo, os três verbos, a descrição, as ervas e a intenção de cada
  * erva são transcrições do rótulo; a cor é a do próprio rótulo do produto.
  *
- * Onde o rótulo não foi fotografado, o campo fica [confirmar] — nada inventado.
+ * Onde o rótulo não foi fotografado, o campo fica — nada inventado.
  *
  * ⚠️ Para o Vinicius: em "Limpeza Densa" o rótulo fala em "mau olhado" e
  * "larvas astrais". É a linguagem da própria cliente, transcrita fielmente,
@@ -230,12 +225,12 @@ const banhosBase = [
     slug: 'aurora-dourada',
     nome: 'Aurora Dourada',
     subtitulo: 'Banho de Prosperidade',
-    conceito: ['Prospera', 'Ilumina', 'Abre caminhos'],
+    conceito: ['Próspera', 'Ilumina', 'Abre caminhos'],
     cor: '#E8DCC0',
     corAcento: '#E8DCC0',
     descricaoCurta: 'Sal grosso marinho, especiarias e flores para abrir caminhos.',
     intencao:
-      'Uma infusão de sal grosso marinho, ervas, especiarias e flores potentes para abrir caminhos, trazer movimento, atrair abundância e elevar sua energia e poder pessoal.',
+      'Uma infusão de sal grosso marinho, ervas, especiarias e flores para acompanhar momentos de recomeço — quando algo pede movimento e você quer marcar essa virada com um gesto. Um ritual para encontrar a própria energia, não para receber outra.',
     aroma: 'Laranja doce e especiarias — cítrico, quente, resinoso.',
     ervas: [
       { nome: 'Folha de laranjeira' },
@@ -259,7 +254,7 @@ const banhosBase = [
     corAcento: '#E0A62E',
     descricaoCurta: 'Para os dias de cansaço, desânimo e tristeza sem motivo aparente.',
     intencao:
-      'Revitaliza, refresca e ilumina o ser. Purifica o corpo, clareia a mente e desperta o brilho da alma. Ideal para momentos de cansaço, desânimo e tristeza — seja sem motivo aparente, seja por ambientes densos.',
+      'Um banho de frescor para os dias de cansaço, desânimo ou aquela tristeza sem motivo aparente. Não para apagar o que você sente — para criar um espaço onde caiba sentir, e de onde seja possível seguir.',
     aroma: 'Herbáceo e fresco — alecrim, manjericão e hortelã.',
     ervas: [
       { nome: 'Calêndula', intencao: 'Energiza e reanima, resgatando o poder e a estima pessoal.' },
@@ -356,8 +351,6 @@ const banhosBase = [
     descricaoCurta: 'Há um lugar em você onde a paz permanece.',
     intencao:
       'Para aquietar o que anda inquieto. Um banho de reconciliação com o próprio dia, com o próprio ritmo, consigo. Paz não como ausência — como presença.',
-    aroma: '[confirmar]',
-    composicao: '[confirmar: ervas deste preparo]',
     fechamento: 'Há um lugar em você onde a paz permanece. Volte para ele.',
   },
   {
@@ -369,8 +362,6 @@ const banhosBase = [
     descricaoCurta: 'Um banho de recomeço, para quando algo dentro pede a virada.',
     intencao:
       'Um banho de recomeço. Para quando algo dentro pede para virar a página, abrir a janela, deixar entrar. Floresça no seu tempo.',
-    aroma: '[confirmar]',
-    composicao: '[confirmar: ervas deste preparo]',
   },
   {
     slug: 'eixo-rosa',
@@ -381,8 +372,6 @@ const banhosBase = [
     descricaoCurta: 'O banho do coração, pela via do afeto.',
     intencao:
       'O banho do coração. Para se acolher com a mesma gentileza que você oferece aos outros — e voltar ao próprio eixo pela via do afeto.',
-    aroma: '[confirmar]',
-    composicao: '[confirmar: ervas deste preparo]',
   },
 ];
 
@@ -425,7 +414,7 @@ const outros: Produto[] = [
     modoDeUso:
       'Aplique nos pulsos, têmporas ou atrás das orelhas. Evite contato com os olhos.',
     cuidados:
-      'Uso externo. Faça um teste em pequena área. Em caso de gravidez ou pele sensível, consulte um profissional. [confirmar: restrições por sinergia]',
+      'Uso externo. Faça um teste em pequena área. Em caso de gravidez ou pele sensível, consulte um profissional.',
     fechamento: 'A sua intenção, do tamanho de um gesto.',
     imagens: img('roll-on-personalizado'),
     relacionados: ['oleo-de-ritual-lavanda', 'spray-de-protecao', 'amuleto-de-harmonia'],
@@ -456,7 +445,7 @@ const outros: Produto[] = [
     descricaoCurta: 'Um sachê de lavanda para perfumar gavetas, armários e cantos de descanso.',
     intencao:
       'Pequeno, discreto, duradouro. Para vestir de aroma a gaveta de roupas, o guarda-roupa, a cabeceira. Um daqueles cuidados que a gente sente sem perceber.',
-    composicao: 'Lavanda seca. [confirmar]',
+    composicao: 'Lavanda seca.',
     preco: 'R$ 20',
     precoBase: 20,
     disponibilidade: 'pronta-entrega',
@@ -475,7 +464,7 @@ const outros: Produto[] = [
     descricaoCurta: 'Um buquê botânico seco, para dar de presente ou para ficar.',
     intencao:
       'Flores que não se despedem na semana seguinte. Um presente afetivo e sóbrio — ou um detalhe para um canto da casa. Por ser artesanal e depender do que há disponível, cada buquê é um pouco único.',
-    composicao: 'Flores e ervas secas selecionadas. [confirmar]',
+    composicao: 'Flores e ervas secas selecionadas.',
     preco: 'R$ 25',
     precoBase: 25,
     disponibilidade: 'pronta-entrega',
@@ -493,13 +482,12 @@ const outros: Produto[] = [
     descricaoCurta: 'Um amuleto artesanal preparado com intenção, para levar ou presentear.',
     intencao:
       'Um objeto para carregar consigo — não como promessa, mas como lembrete. Algo pequeno que ancora uma intenção escolhida por você. Preparado sob consulta, com atenção ao que faz sentido para cada pessoa.',
-    composicao: '[confirmar: materiais e elementos]',
     preco: 'a partir de R$ 50',
     precoBase: 50,
     disponibilidade: 'sob-consulta',
     comoAdquirir:
       'Fale com a gente pelo WhatsApp para conversar sobre a intenção e a disponibilidade.',
-    cuidados: 'Objeto artesanal — pequenas variações fazem parte. [confirmar]',
+    cuidados: 'Objeto artesanal — pequenas variações fazem parte.',
     fechamento: 'Um lembrete de bolso para o que importa.',
     imagens: img('amuleto-de-harmonia'),
     relacionados: ['roll-on-personalizado', 'buque-botanico', 'sache-lavanda-da-alma'],

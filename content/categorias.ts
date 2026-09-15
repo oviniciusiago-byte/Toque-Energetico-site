@@ -13,9 +13,9 @@ export const categorias: Categoria[] = [
       'Flores e ervas para dissolver na água. Oito banhos, cada um com uma intenção — do que precisa ser solto ao que precisa ser reacendido. Servem para o corpo inteiro ou só para os pés, no fim de um dia longo.',
     modoDeUsoLinha:
       'Ferva água e desligue o fogo. Adicione as flores e deixe em infusão por alguns minutos, tampado. Coe. Para o banho, despeje sobre o corpo do pescoço para baixo, após o banho comum. Para o escalda-pés, dilua em água morna numa bacia e permaneça pelo tempo que for confortável. Enquanto usa, respire. Não tenha pressa.',
-    // TODO [confirmar]: restrições específicas por fórmula.
+    // TODO: restrições específicas por fórmula.
     cuidadosLinha:
-      'Uso externo. Produto artesanal — cor e aroma podem variar entre lotes. Não ingerir. Em caso de gravidez, pele sensível ou alergias, consulte um profissional antes de usar. [confirmar: restrições específicas por fórmula]',
+      'Uso externo. Produto artesanal — cor e aroma podem variar entre lotes. Não ingerir. Em caso de gravidez, pele sensível ou alergias, consulte um profissional antes de usar.',
     notaLinha: 'Toda a linha: R$ 24 · pronta entrega',
     capa: '/images/categories/banhos-escalda-pes.jpg',
   },
@@ -69,7 +69,8 @@ export const categorias: Categoria[] = [
     // Fora do lançamento inicial. Estrutura pronta: remover `oculta` para publicar.
     slug: 'velas',
     nome: 'Velas Aromáticas',
-    intro: '[confirmar: intro da linha de velas]',
+    intro:
+      'Uma chama acesa também marca uma pausa. A linha ainda não estreou — quando estrear, entra aqui.',
     capa: '/images/categories/velas.jpg',
     oculta: true,
   },

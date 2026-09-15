@@ -15,6 +15,21 @@ export const site = {
   url: 'https://toqueenergetico.com.br', // TODO: domínio final
 } as const;
 
+/**
+ * O EIXO CONCEITUAL da marca, nas palavras da própria cliente.
+ *
+ * Não é mais uma frase de copy: é o critério. Quando houver dúvida sobre uma
+ * palavra, imagem ou seção, a pergunta é "isto devolve a pessoa para si, ou
+ * faz parecer que a solução está no produto?". Se for a segunda, ajusta.
+ *
+ * Por isso vive aqui em cima, e não perdido no meio de uma seção.
+ */
+export const conceito = {
+  eixo: 'Não é sobre apagar o que você sente. É sobre permanecer em si enquanto sente.',
+  sintese: ['Sentir', 'Acolher', 'Transformar'],
+  assinatura: 'Volte para si.',
+} as const;
+
 export const nav = [
   { label: 'Catálogo', href: '/catalogo' },
   { label: 'Rituais', href: '/rituais' },
@@ -68,16 +83,17 @@ export const numeros = [
   { valor: 'AUTO_PRODUTOS', unidade: 'produtos', legenda: 'no catálogo, cada um com uma intenção' },
 ] as const;
 
-/**
- * Os três capítulos — a narrativa que a marca pediu:
- * "sombra e recolhimento → presença e descoberta → luz e expressão".
- * A sombra aqui não é negatividade: é recolhimento, silêncio, profundidade.
+/*
+ * Os capítulos "Sombra · Presença · Luz" foram REMOVIDOS de propósito.
+ *
+ * Eram a legenda de um conceito que a cliente pediu para não explicar: luz e
+ * sombra devem ser sentidas pela atmosfera — densidade, respiro, mudança de
+ * tonalidade — antes de serem ditas. Escrever "Capítulo I · Sombra" na página
+ * é justamente a explicação que ela não quer.
+ *
+ * O movimento continua acontecendo: a cena dos banhos atravessa oito cores
+ * reais, do creme ao vinho. Ele só não é mais anunciado.
  */
-export const capitulos = {
-  sombra: 'Capítulo I · Sombra',
-  presenca: 'Capítulo II · Presença',
-  luz: 'Capítulo III · Luz',
-} as const;
 
 /** Copy da Home — cada bloco corresponde a uma seção da página. */
 export const home = {
@@ -145,12 +161,16 @@ export const home = {
   depoimentos: {
     kicker: 'Quem usa',
     titulo: 'Do outro lado do cuidado',
-    // TODO [confirmar]: inserir 2–3 mensagens reais de clientes já recebidas.
-    placeholder:
-      '[confirmar: inserir 2–3 mensagens reais de clientes já recebidas]',
+    /* Enquanto não houver mensagem real, a seção inteira não é renderizada.
+       Mostrar um aviso de conteúdo pendente para o visitante é pior do que
+       não ter a seção. Bastam duas ou três frases aqui para ela voltar. */
+    itens: [] as { texto: string; autoria: string }[],
   },
   fechamento: {
-    kicker: 'Fechamento',
+    /* A síntese da marca vive AQUI e só aqui, como assinatura de fechamento —
+       a cliente pediu que o eixo conceitual organizasse o site sem se repetir
+       dezenas de vezes. O eixo longo está no manifesto; a síntese, no fim. */
+    kicker: conceito.sintese.join(' · '),
     titulo: 'Volte para si.',
     texto:
       'Escolha o seu produto e converse com a gente pelo WhatsApp. A entrega é combinada de acordo com o seu endereço.',
@@ -238,9 +258,8 @@ export const paginas = {
       },
       {
         pergunta: 'Vocês têm loja física?',
-        // TODO [confirmar]: pontos de venda e presença em feiras — ver página "Onde encontrar".
         resposta:
-          '[confirmar: pontos de venda e presença em feiras — ver página “Onde encontrar”]',
+          'Não temos loja própria. A Toque Energético circula por feiras e pontos parceiros ao longo do ano, e o calendário muda conforme os eventos. O caminho mais certo é perguntar pelo WhatsApp onde estaremos, ou acompanhar pelo Instagram.',
       },
       {
         pergunta: 'Como funciona o frete?',
@@ -269,8 +288,7 @@ export const paginas = {
       },
       {
         pergunta: 'Terão velas?',
-        // TODO [confirmar]: previsão das velas.
-        resposta: 'Ainda não neste primeiro momento, mas estão nos planos. [confirmar]',
+        resposta: 'Ainda não neste primeiro momento, mas estão nos planos.',
       },
     ],
   },
@@ -279,8 +297,6 @@ export const paginas = {
     kicker: 'Contato',
     corpo:
       'O jeito mais direto de conversar, tirar dúvidas e fechar um pedido é pelo WhatsApp. Respondemos com o mesmo cuidado que colocamos nos produtos.',
-    // TODO [confirmar]: número de WhatsApp — preencher em lib/whatsapp.ts
-    whatsappPlaceholder: '[confirmar: número]',
     cta: { label: 'Chamar no WhatsApp' },
   },
   ondeEncontrar: {
@@ -288,9 +304,6 @@ export const paginas = {
     kicker: 'Pontos de venda',
     corpo:
       'Além do site, você pode encontrar a Toque Energético em feiras e pontos parceiros ao longo do ano. Como participamos de eventos sazonais, o calendário muda — acompanhe pelo Instagram ou pergunte pelo WhatsApp onde estaremos.',
-    // TODO [confirmar]: lista de pontos de venda fixos e feiras agendadas, se houver.
-    placeholder:
-      '[confirmar: lista de pontos de venda fixos e feiras agendadas, se houver]',
   },
   atacado: {
     h1: 'Atacado e revenda',

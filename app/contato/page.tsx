@@ -42,9 +42,10 @@ export default function ContatoPage() {
                     Chamar no WhatsApp
                   </a>
                 ) : (
-                  // TODO [confirmar]: número — preencher WPP em lib/whatsapp.ts
+                  /* Sem número configurado, o item simplesmente não aparece.
+                     Aviso de pendência é conversa interna, não conteúdo. */
                   <span className="text-[color:var(--s-muted)]">
-                    {paginas.contato.whatsappPlaceholder}
+                    Em breve por aqui — enquanto isso, fale pelo Instagram.
                   </span>
                 )}
               </dd>

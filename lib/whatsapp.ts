@@ -3,7 +3,7 @@
  *
  * TODO: trocar WPP pelo número real da Fernanda (formato: 55 + DDD + número).
  */
-export const WPP = '55XXXXXXXXXXX'; // TODO: número real — [confirmar com a cliente]
+export const WPP = '55XXXXXXXXXXX'; // TODO: número real, pendente com a cliente
 
 /** true quando o número já foi preenchido de verdade. */
 export const WPP_CONFIGURADO = !/X/.test(WPP);
