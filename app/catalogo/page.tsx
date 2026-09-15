@@ -1,19 +1,20 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
+import type { Metadata } from "next";
+import Link from "next/link";
 
-import CategoryNav from '@/components/CategoryNav';
-import ProductCard from '@/components/ProductCard';
-import { Reveal, RevealGroup, RevealItem } from '@/components/Reveal';
-import Section from '@/components/Section';
-import SectionHead from '@/components/SectionHead';
-import WhatsAppCTA from '@/components/WhatsAppCTA';
-import { categoriasVisiveis } from '@/content/categorias';
-import { produtos, produtosPorCategoria } from '@/content/produtos';
-import { disponibilidades, paginas } from '@/content/site';
-import { wppMsg } from '@/lib/whatsapp';
+import CategoryNav from "@/components/CategoryNav";
+import CenaEmergente from "@/components/scroll/CenaEmergente";
+import ProductCard from "@/components/ProductCard";
+import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
+import Section from "@/components/Section";
+import SectionHead from "@/components/SectionHead";
+import WhatsAppCTA from "@/components/WhatsAppCTA";
+import { categoriasVisiveis } from "@/content/categorias";
+import { produtos, produtosPorCategoria } from "@/content/produtos";
+import { disponibilidades, paginas } from "@/content/site";
+import { wppMsg } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
-  title: 'Catálogo',
+  title: "Catálogo",
   description: paginas.catalogo.intro,
 };
 
@@ -38,7 +39,10 @@ export default function CatalogoPage() {
 
           {/* Legenda de disponibilidade */}
           <Reveal delay={0.22}>
-            <dl className="mt-14 grid gap-6 border-t pt-8 sm:grid-cols-3" style={{ borderColor: 'var(--s-line)' }}>
+            <dl
+              className="mt-14 grid gap-6 border-t pt-8 sm:grid-cols-3"
+              style={{ borderColor: "var(--s-line)" }}
+            >
               {Object.entries(disponibilidades).map(([chave, info]) => (
                 <div key={chave}>
                   <dt className="label">{info.label}</dt>
@@ -68,39 +72,45 @@ export default function CatalogoPage() {
       {categoriasVisiveis.map((categoria, i) => {
         const itens = produtosPorCategoria(categoria.slug);
         return (
-          <Section
-            key={categoria.slug}
-            id={categoria.slug}
-            surface={i % 2 === 0 ? 'paper' : 'smoke'}
-            padding="loose"
-            className="scroll-mt-24"
-          >
-            <div className="shell">
-              <SectionHead
-                indice={String(i + 1).padStart(2, '0')}
-                label="Linha"
-                titulo={categoria.nome}
-                intro={categoria.intro}
-                meta={categoria.notaLinha}
-                acao={
-                  <Link href={`/catalogo/${categoria.slug}`} className="btn btn-outline">
-                    Ver a linha
-                  </Link>
-                }
-              />
+          /* Cada linha emerge de dentro da anterior — ver a nota em
+             CenaEmergente.tsx sobre por que isto substitui o corte seco. */
+          <CenaEmergente key={categoria.slug}>
+            <Section
+              id={categoria.slug}
+              surface={i % 2 === 0 ? "paper" : "smoke"}
+              padding="loose"
+              className="scroll-mt-24"
+            >
+              <div className="shell">
+                <SectionHead
+                  indice={String(i + 1).padStart(2, "0")}
+                  label="Linha"
+                  titulo={categoria.nome}
+                  intro={categoria.intro}
+                  meta={categoria.notaLinha}
+                  acao={
+                    <Link
+                      href={`/catalogo/${categoria.slug}`}
+                      className="btn btn-outline"
+                    >
+                      Ver a linha
+                    </Link>
+                  }
+                />
 
-              <RevealGroup
-                className="mt-14 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4 sm:mt-20"
-                stagger={0.07}
-              >
-                {itens.map((p, j) => (
-                  <RevealItem key={p.slug}>
-                    <ProductCard produto={p} prioridade={i === 0 && j < 4} />
-                  </RevealItem>
-                ))}
-              </RevealGroup>
-            </div>
-          </Section>
+                <RevealGroup
+                  className="mt-14 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4 sm:mt-20"
+                  stagger={0.07}
+                >
+                  {itens.map((p, j) => (
+                    <RevealItem key={p.slug}>
+                      <ProductCard produto={p} prioridade={i === 0 && j < 4} />
+                    </RevealItem>
+                  ))}
+                </RevealGroup>
+              </div>
+            </Section>
+          </CenaEmergente>
         );
       })}
 

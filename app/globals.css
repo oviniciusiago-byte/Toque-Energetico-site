@@ -572,6 +572,14 @@ html.lenis body {
     flex: none;
   }
 
+  /* A seção que emerge precisa ficar ACIMA da anterior na pilha, senão a
+     margem negativa a esconderia por baixo em vez de sobrepô-la. */
+  .cena-emergente {
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+  }
+
   /* Recorte por ORIENTAÇÃO da tela, não por largura.
      O que quebra no celular não é a largura em si — é o viewport ficar mais
      alto que largo: aí o `object-cover` de uma foto 16:9 descarta as laterais
