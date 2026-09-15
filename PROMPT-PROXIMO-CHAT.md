@@ -1,139 +1,133 @@
-# Prompt para colar como PRIMEIRO comando do chat novo
+# Primeiro comando do próximo chat
 
-Copie tudo abaixo da linha.
+> Copie tudo abaixo da linha e cole como primeira mensagem.
 
 ---
 
-Você vai continuar o site da **Toque Energético**. Antes de escrever qualquer
-código, leia estes arquivos nesta ordem — eles contêm todo o histórico,
-decisões, erros já cometidos e armadilhas do ambiente:
+Você vai continuar o site da **Toque Energético**. Leia estes três arquivos
+antes de qualquer coisa — eles são a fonte de verdade e me poupam de repetir
+tudo:
 
-1. `handoff-2026-09-04.md` (raiz do projeto) — **leia inteiro, é a fonte de verdade**
-2. `README.md` — sistema de superfícies, contraste, anatomia dos cartões
-3. `docs/toque-energetico-briefing-site-v1.md` e `docs/toque-energetico-copy-site-v1.md` — briefing e copy originais da cliente
-4. `docs/briefing-fotografico.md` — especificação das imagens
-5. `git log` — cada commit explica o **porquê** da decisão, não só o quê
+- `handoff-2026-09-15.md` — contexto completo, acessos, decisões, erros
+- `referencias/era-residence.md` — a medição quadro a quadro da referência
+- `docs/direcao-cliente-2026-09-15.md` — a régua de voz que a cliente mandou
 
-## Onde estão as coisas
+**Projeto:** `/Users/viniciuspereira/Library/CloudStorage/GoogleDrive-oviniciusiago@gmail.com/Meu Drive/TOQUE ENERGÉTICO BASE SITE`
+**No ar:** https://toque-energetico.vercel.app · **Publicar:** `npm run deploy`
+(push **não** publica) · **Entrega: 21/09/2026.**
 
-- **Projeto:** `/Users/viniciuspereira/Library/CloudStorage/GoogleDrive-oviniciusiago@gmail.com/Meu Drive/TOQUE ENERGÉTICO BASE SITE`
-- **Fotos reais dos produtos (HEIC):** `…/Meu Drive/TOQUE ENERGÉTICO/IMAGENS/BANHO/` — converta com `sips -s format jpeg -Z 1400` para ler
-- **Site no ar:** https://toque-energetico.vercel.app
-- **Repo:** https://github.com/oviniciusiago-byte/Toque-Energ-tico-site
-- **Vercel:** projeto `toque-energetico`, CLI já autenticada como `oviniciusiago-byte` e instalada como devDependency
-- **Publicar:** `npm run deploy` (publica **e** verifica 10 rotas no ar). `git push` **não** publica — Vercel e GitHub não estão conectados
+---
 
-## Regras do ambiente que já me custaram tempo
+## O que eu quero
 
-- **Nunca** rodar `next build` com `next dev` no ar — corrompe o `.next`. Sempre `pkill -f "next dev"` → `rm -rf .next` → build
-- **Nunca** filtrar a saída de um comando de deploy com `grep` — três falsos "deploy falhou" vieram daí
-- Rodar `python3 scripts/check-contrast.py` depois de qualquer mexida em cor: ele falha com exit 1 se algum token cair abaixo de 4.5:1
-- Classe Tailwind **nunca** por template string (`` `surface-${x}` ``) — o tree-shaking purga e a cor não existe no CSS. Sempre mapa de literais
-- Nos testes de scroll, use `window.__lenis.scrollTo(y, { immediate: true })` — o Lenis controla a rolagem e `window.scrollTo` não atualiza o ScrollTrigger
-- Screenshots do painel do browser vêm em branco quando o painel está oculto; verificar por DOM é mais confiável
-- Ao medir posição de scroll, meça **com a página no topo** ou use `start`/`end` do próprio trigger — errei isso três vezes e conclui bug onde não havia
+Site-catálogo (não é loja — fecha no WhatsApp) da Toque Energético, marca de
+autocuidado artesanal da Maria Fernanda Pavan. A referência que eu quero
+alcançar é **https://www.era-residence.com/** — eu gravei a tela dela por
+2m39s e o vídeo está em
+`~/Downloads/Gravação de Tela 2026-09-15 às 16.56.10.mov`.
 
-## Contexto rápido
+Eu disse duas coisas no chat anterior e as duas continuam valendo:
 
-Site-catálogo, **não é loja** — a venda fecha no WhatsApp. Cliente:
-Maria Fernanda Pavan (BH). Marca artesanal de autocuidado; conceito de luz e
-sombra; a estrela como centro que irradia. Base de cor atual é neutra
-(`paper` / `ink` / `smoke`) porque eu pedi para tirar o cimento e o verde da
-cliente por ora — as superfícies dela (`bone`, `tan`, `sage`, `olive`, `moss`,
-`noir`, `concrete`) seguem definidas em `app/globals.css` para reencaixar
-depois. **A cor vem dos produtos:** os 8 banhos carregam a cor real do seu
-rótulo, transcrita das fotos.
+**1.** *"O catálogo está muito aquém do que você é capaz. Fraco de design,
+fraco de animação, as imagens não estão boas o suficiente."*
 
-Stack: Next 15 App Router · TS · Tailwind 3 · **GSAP 3.15 + ScrollTrigger** ·
-Lenis · Framer Motion.
+**2.** *"Você não mudou nada na home do site, continua tudo com o mesmo layout
+ruim. E aparentemente também não entendeu como funciona aquela cúpula do site
+da era."*
 
-## O que JÁ funciona (não refazer, não quebrar)
+**Achei as animações da era muito bem construídas e você ainda não chegou perto
+delas. Quero explorar essa referência a fundo neste chat.**
 
-- `components/scroll/HeroScrub.tsx` — abertura fixada com `pin` + `scrub`
-- `components/scroll/BathsScene.tsx` — **a peça central**: seção fixada onde o
-  scroll atravessa os 8 banhos e a cor real de cada rótulo toma a tela inteira.
-  A cor é escrita direto no DOM quadro a quadro, **sem `transition`**
-- `lib/contraste.ts` — calcula o par fundo/texto de cada cena (a tinta vira
-  clara sozinha nos fundos escuros)
-- `components/Intro.tsx` — cortina de abertura, uma vez por sessão
-- `components/SideRail.tsx` — trilha lateral com índice e nome da seção
-- Camada de conteúdo com os dados **reais** dos rótulos (nome, subtítulo, três
-  verbos, ervas e a intenção de cada uma). As 39 marcações `[confirmar]` são
-  intencionais — **não invente** nada no lugar delas
+---
 
-## A TAREFA
+## Ordem de trabalho
 
-O Vinicius disse, com razão, que o site ainda não chega perto das referências
-de animação. Ele quer explorar **estas duas** a fundo:
+### 1 · Estudar a era de verdade — medindo, não olhando
 
-- **https://www.era-residence.com/** ← prioridade
-- **https://www.collabcapitolium.fr/**
+No chat anterior eu errei o mecanismo da cúpula **duas vezes** porque descrevi
+o que parecia acontecer em vez de medir. Só acertei extraindo os 145 quadros
+nativos (51,62 fps) e ajustando geometria neles. O resultado está em
+`referencias/era-residence.md`: a cúpula é **círculo de raio constante `50vw`**
+sobre um fundo **parado**, e **não tem uma linha de JavaScript** — é
+`position: sticky` + `border-radius: 50vw 50vw 0 0`.
 
-Do era-residence eu já confirmei o stack inspecionando a página:
-**GSAP + ScrollTrigger + SplitText + CustomEase + Lenis + Barba**. Os três
-recursos que ele usa e que o nosso site **ainda não tem** são justamente o que
-falta:
+Faça o mesmo com o resto. As ferramentas já estão no lugar:
+`ffmpeg`/`ffprobe` em `<scratchpad>/node_modules/ffmpeg-static/`, PIL 11.3 no
+`python3` do sistema.
 
-1. **`SplitText` + `CustomEase`** — revelação de títulos **linha por linha
-   atrelada ao scroll**, com curva de easing própria. Hoje nossos títulos
-   fazem fade de bloco inteiro. Aplicar nos títulos de seção da home e das
-   páginas internas.
-2. **Transição de página com cortina** (o papel do Barba). Hoje
-   `components/PageTransition.tsx` é um fade simples.
-3. **Alternância de estado tipo "by day / by night"** do era-residence. Na
-   Toque Energético isso é literalmente **luz ↔ sombra**, que é o conceito
-   central da marca — pode ser um controle que troca a superfície da página
-   inteira. Essa é a ideia com maior potencial de virar assinatura do site.
+Mecanismos ainda **não medidos**, listados na seção 2 daquele arquivo:
 
-Do collabcapitolium: a estrutura em **capítulos com cenas fixadas** (já temos
-os capítulos escritos, mas não as cenas por capítulo).
+- revelação do card no hover (clip-path diagonal + escala + `xPercent`)
+- paralaxe de velocidade entre título da categoria e a grade
+- trilha lateral fixa: quando o contador troca em relação à borda da seção
+- SplitText: unidade, passo da cascata, duração — medir num título real
+- transição de rota (Barba): o que fica, o que sai, em quanto tempo
+- preloader SVG e a alternância "by day / by night"
 
-**Antes de implementar, visite as duas referências e estude o movimento** —
-não confie na minha descrição. Use o browser, inspecione os scripts, role as
-páginas devagar. Depois proponha ao Vinicius o que vai fazer, em ordem de
-impacto, e confirme antes de sair codando: ele tem repertório e opinião forte,
-e prefere decidir a prioridade.
+**Atualize `referencias/era-residence.md` com cada medição nova.** Quero esse
+arquivo virando o manual da referência.
 
-## A dívida que eu deixei
+### 2 · Consertar a cúpula
 
-**`components/scroll/HorizontalRail.tsx`** — tentei a versão **fixada** (scroll
-vertical virando deslocamento horizontal, como nas referências) e **não
-consegui fazer funcionar**. O `pin` engatava e a faixa do trigger era
-calculada certa, mas o trigger **nunca reportava progresso**: `onUpdate`
-disparava ~6 vezes na montagem e nunca mais, e a trilha ficava em `x = 0`.
+`components/scroll/CenaEmergente.tsx` está com o mecanismo errado (elipse que
+achata + `scrub` do GSAP sobre fundo rolando). Reescreva com o que foi medido.
+Deve sobrar CSS e sumir o GSAP de dentro dele.
 
-Hipóteses que testei e **não** eram a causa: valor de tween função gravado
-antes do layout; `invalidateOnRefresh` em trigger sem animação; medição errada
-minha. Havia um laço de `ResizeObserver` que era um bug real (quebrava a
-altura do documento e deixava as faixas inalcançáveis) — corrigido, mas não
-era a causa do `x = 0`.
+### 3 · Redesenhar a home — este é o pedido central
 
-O que está no ar é rolagem horizontal **nativa** com arraste e encaixe,
-verificada funcionando. A nota honesta está no topo do componente.
+`app/page.tsx` continua com a espinha de sempre: seção, título, grade, seção,
+título, grade, tudo com `Reveal` por cima. As cenas novas foram **encaixadas
+dentro** do layout velho em vez de o layout ter sido repensado. É isso que eu
+chamei de "mesmo layout ruim".
 
-**Sugestão de caminho novo:** em vez do `pin` do ScrollTrigger, testar
-`position: sticky` no container e traduzir por progresso calculado do
-`getBoundingClientRect()` do wrapper — tira o pin-spacer da equação, que é
-onde as coisas quebraram.
+Não quero mais uma seção nova. Quero a página **recomposta**, no ritmo da era:
+imagem forte + frase curta, muito respiro, atmosfera no lugar de explicação,
+cada troca de seção sendo um gesto e não um corte.
 
-## Como o Vinicius mede o resultado
+A régua da cliente vale aqui: *"Não é sobre apagar o que você sente. É sobre
+permanecer em si enquanto sente."* Luz e sombra são **sentidas**, nunca
+legendadas. Silêncio visual e espaço são parte da marca.
 
-Ele compara **lado a lado** com as referências e a meta declarada é
-"digno de awwwards". Ele reclamou de eu estar "travado" e pediu para eu criar
-algo de que eu me orgulhe. Então: proponha ideias suas, não só execute; e
-quando algo não funcionar, diga que não funcionou em vez de entregar quebrado.
+**Me apresente a nova espinha da home antes de escrever o código** — em texto,
+seção por seção, dizendo o que cada momento faz e por quê. Só isso eu quero
+aprovar antes. O resto executa.
 
-Uma coisa que vale dizer a ele com franqueza: **o site hoje vive de gradientes
-de placeholder.** A cena dos banhos com 8 fotos reais em fundo de cimento, luz
-lateral, vidro e ervas com textura é o que a transforma de vez. Ele já disse
-que vai gerar as imagens por IA — `docs/briefing-fotografico.md` tem proporção,
-nome de arquivo e direção de arte por cena, e `npm run placeholders` nunca
-sobrescreve arquivo existente, então basta salvar com o nome certo.
+### 4 · Catálogo ao mesmo nível
 
-## Duas coisas que dependem de decisão dele (não decida sozinho)
+Depois da home: hover dos cards, paralaxe entre título e grade, marginália
+fixa — tudo com base no que você mediu no passo 1.
 
-1. **O repositório é público** e `docs/` tem o briefing da cliente com nome
-   completo, cidade, Instagram, preços e condição comercial. Ou torna o repo
-   privado, ou remove `docs/` do versionamento.
-2. **O projeto está dentro do Google Drive.** O Drive sincronizando `.git`
-   tende a corromper o repositório. Recomendo mover para `~/dev/`.
+### 5 · Copy e imagens (pode ir em paralelo)
+
+- Terminar a varredura pela régua da cliente: falta o **Spray de Proteção**
+  (reposicionar para *"estar no mundo sem absorver tudo"*), velas, brumas,
+  incensos, óleos, roll-ons, presentes, `content/categorias.ts`, e as páginas
+  `/sobre`, `/rituais`, `/atacado`.
+- Imagens que faltam: 5 linhas do catálogo, 7 capas de categoria,
+  15 editoriais. Use o **Magnific MCP** com `imagen-nano-banana-2` (é o Nano
+  Banana Pro), produtos em **4:5**, cenas em **16:9**, a partir das fotos reais
+  em `…/Meu Drive/TOQUE ENERGÉTICO/IMAGENS/BANHO/`.
+- **Uma geração por prompt.** Crédito é caro.
+- O nome do "Encantamento" ficou obscurecido em 3 tentativas — resolva com
+  `images_retouch` cirúrgico, não gerando a imagem inteira de novo.
+
+---
+
+## Como trabalhar comigo
+
+- **Executa.** Se eu já pedi, não me pergunte se pode fazer. Pergunta só o que
+  muda o resultado de verdade — e a única coisa nessa lista é a espinha da home.
+- **Mede antes de afirmar.** Se for descrever movimento de vídeo, extraia
+  quadro nativo. Descrição de olho já me custou duas rodadas.
+- **Use o Claude in Chrome**, não o painel de navegador embutido. O embutido,
+  escondido, congela o `gsap.ticker` e faz parecer que a animação quebrou.
+- **Nada de `opacity-*` para hierarquia de texto** — o contraste é calculado em
+  `lib/contraste.ts` e opacidade desfaz a garantia.
+- **Nada de `pin` do ScrollTrigger** — usa `position: sticky`. O `pin` já
+  quebrou a página inteira brigando com o React na troca de rota.
+- `npm run typecheck` antes de commitar. Nunca `next build` com o `dev` no ar.
+- Mensagem de commit em português, dizendo o que mudou para o usuário do site,
+  não o nome do arquivo.
+- Se tiver defeito conhecido no que você entregou, **me conte**. Não esconda.
+
+Comece lendo os três arquivos e me diga o plano da home.
